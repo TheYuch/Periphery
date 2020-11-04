@@ -14,7 +14,7 @@ public class FightingController : MonoBehaviour
         currentWeapon = transform.GetChild(0).GetComponent<WeaponBase>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         currentWeapon.UpdateWeapon(fightingJoystick.Direction, transform.position, fightingJoystick.isPressed);
     }

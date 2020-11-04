@@ -12,6 +12,12 @@ public abstract class WeaponBase : MonoBehaviour
      *     - more features when the game is more developed.
      */
     protected const float moveScale = 1f;
+    protected Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     public abstract void UpdateWeapon(Vector2 joystickDirection, Vector3 playerPos, bool joystickIsPressed);
 }

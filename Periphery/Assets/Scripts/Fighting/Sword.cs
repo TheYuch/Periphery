@@ -6,11 +6,15 @@ public class Sword : WeaponBase
 {
     private const float swordLength = 1f; //todo: set this based on sprite image length
     private Vector2 tipPosition { get { return transform.position + transform.up * swordLength; } }
+    private Vector3 localPosition;
 
     public override void UpdateWeapon(Vector2 joystickDirection, Vector3 playerPos, bool joystickIsPressed)
     {
         if (!joystickIsPressed)
+        {
+            transform.localPosition = localPosition;
             return;
+        }
 
         Vector2 joystickRelativePos = joystickDirection * WeaponBase.moveScale;
         //rotation
@@ -23,5 +27,7 @@ public class Sword : WeaponBase
 
         //translation (set transform.position so that tip position is equal to joystickrelativepos
         transform.position += (Vector3)(joystickRelativePos - tipPosition) + playerPos;
+
+        localPosition = transform.localPosition;
     }
 }
