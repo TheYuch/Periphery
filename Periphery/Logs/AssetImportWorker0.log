@@ -1,0 +1,417 @@
+Using pre-set license
+Built from '2020.2/release' branch; Version is '2020.2.1f1 (270dd8c3da1c) revision 2559448'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10  (10.0.0) 64bit' Language: 'en' Physical Memory: 16304 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.2.1f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/frank/Documents/unity/Periphery/Periphery
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+51987
+Successfully changed project path to: C:/Users/frank/Documents/unity/Periphery/Periphery
+C:/Users/frank/Documents/unity/Periphery/Periphery
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 40.49 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.2.1f1 (270dd8c3da1c)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/frank/Documents/unity/Periphery/Periphery/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2070 SUPER (ID=0x1e84)
+    Vendor:   
+    VRAM:     8011 MB
+    Driver:   27.21.14.5671
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56964
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001859 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 39.04 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.194 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001055 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 39.37 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.033 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Refreshing native plugins compatible for Editor in 0.41 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1829 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.1 MB.
+System memory in use after: 85.2 MB.
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 2277.
+Total: 2.048300 ms (FindLiveObjects: 0.184400 ms CreateObjectMapping: 0.067300 ms MarkObjects: 1.741400 ms  DeleteObjects: 0.054300 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Palettes/Ground Tiles.prefab
+  artifactKey: Guid(9e300718c9ab02b4e8a002eed6cf1449) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palettes/Ground Tiles.prefab using Guid(9e300718c9ab02b4e8a002eed6cf1449) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92434f460490fcbd64a2b90b5e2bf008') in 0.069922 seconds
+  Import took 0.073401 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000189 seconds.
+  path: Assets/Palettes/Tiles
+  artifactKey: Guid(cd4e42d3fafcbc74c9a075524cbd6a91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palettes/Tiles using Guid(cd4e42d3fafcbc74c9a075524cbd6a91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38a5efe159b8d464a4e7d6231f46e0bc') in 0.008330 seconds
+  Import took 0.011306 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000245 seconds.
+  path: Assets/Palettes/Tiles/Minifantasy_DungeonFloorTiles.asset
+  artifactKey: Guid(03745664feb7b8746ba849eb3b0224fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palettes/Tiles/Minifantasy_DungeonFloorTiles.asset using Guid(03745664feb7b8746ba849eb3b0224fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ea2a87f5419b3f8e7fe446d24a88fde') in 0.152194 seconds
+  Import took 0.155288 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000287 seconds.
+  path: Assets/Palettes/Tiles/Minifantasy_DungeonDoorTiles.asset
+  artifactKey: Guid(48fbee8de11b6fc4a8a74a159a2f8561) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palettes/Tiles/Minifantasy_DungeonDoorTiles.asset using Guid(48fbee8de11b6fc4a8a74a159a2f8561) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '510637a2db8e59700ea54750c1f40f88') in 0.015887 seconds
+  Import took 0.019527 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000210 seconds.
+  path: Assets/Palettes/Tiles/Minifantasy_DungeonCliffTiles.asset
+  artifactKey: Guid(a5200e8c972ed27448d7ea89e6ce9595) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palettes/Tiles/Minifantasy_DungeonCliffTiles.asset using Guid(a5200e8c972ed27448d7ea89e6ce9595) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86e8614bff90e0d6fb0e3d8972f1147e') in 0.026718 seconds
+  Import took 0.030426 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 188.977915 seconds.
+  path: Assets/Imports/Tileset/Minifantasy_DungeonFloorTiles.png
+  artifactKey: Guid(e613500ba629ead4ba50c5b5b7b27d67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imports/Tileset/Minifantasy_DungeonFloorTiles.png using Guid(e613500ba629ead4ba50c5b5b7b27d67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bdf947928c7b127942916532af474042') in 0.072199 seconds
+  Import took 0.076574 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029167 seconds.
+  path: Assets/Imports/Tileset/Minifantasy_DungeonFloorTiles.png
+  artifactKey: Guid(e613500ba629ead4ba50c5b5b7b27d67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imports/Tileset/Minifantasy_DungeonFloorTiles.png using Guid(e613500ba629ead4ba50c5b5b7b27d67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bdf947928c7b127942916532af474042') in 0.010856 seconds
+  Import took 0.014435 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.845230 seconds.
+  path: Assets/Imports/Tileset/Minifantasy_DungeonFloorTiles.png
+  artifactKey: Guid(e613500ba629ead4ba50c5b5b7b27d67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imports/Tileset/Minifantasy_DungeonFloorTiles.png using Guid(e613500ba629ead4ba50c5b5b7b27d67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc0ad8912f7dddd905b6b946d9742e0a') in 0.007511 seconds
+  Import took 0.011303 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 80.483212 seconds.
+  path: Assets/Imports/Tileset/Minifantasy_DungeonFloorTiles.png
+  artifactKey: Guid(e613500ba629ead4ba50c5b5b7b27d67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imports/Tileset/Minifantasy_DungeonFloorTiles.png using Guid(e613500ba629ead4ba50c5b5b7b27d67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '699ca4198259596fc552d5951e0e00e4') in 0.049277 seconds
+  Import took 0.053346 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 55.069690 seconds.
+  path: Assets/Palettes/Minifantasy_DungeonFloorTiles_0.asset
+  artifactKey: Guid(4a7fe4278dc98364c8b116f5f5f1fafa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palettes/Minifantasy_DungeonFloorTiles_0.asset using Guid(4a7fe4278dc98364c8b116f5f5f1fafa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3754793ee18bc6c647f724b706fb418') in 0.016681 seconds
+  Import took 0.021196 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000219 seconds.
+  path: Assets/Palettes/Minifantasy_DungeonFloorTiles_6.asset
+  artifactKey: Guid(c438090dd32fa2545a7aed835001b6de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palettes/Minifantasy_DungeonFloorTiles_6.asset using Guid(c438090dd32fa2545a7aed835001b6de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b62e0af69df33d83de95a7cea7eaf3f') in 0.016103 seconds
+  Import took 0.019371 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000167 seconds.
+  path: Assets/Palettes/Minifantasy_DungeonFloorTiles_4.asset
+  artifactKey: Guid(4f67801d6888c434c94943544971e309) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palettes/Minifantasy_DungeonFloorTiles_4.asset using Guid(4f67801d6888c434c94943544971e309) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4ea95ddf5ed2713fe912e1cae9a5277') in 0.024632 seconds
+  Import took 0.028337 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000199 seconds.
+  path: Assets/Palettes/Minifantasy_DungeonFloorTiles_2.asset
+  artifactKey: Guid(e8fec6c0a05f8044e9c7f401745a63ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palettes/Minifantasy_DungeonFloorTiles_2.asset using Guid(e8fec6c0a05f8044e9c7f401745a63ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b835fd06f0328e58de38f0c9a677ce28') in 0.017054 seconds
+  Import took 0.020932 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000229 seconds.
+  path: Assets/Palettes/Minifantasy_DungeonFloorTiles_11.asset
+  artifactKey: Guid(b06ddcfe6e37ddc49a68ce849dd2990b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palettes/Minifantasy_DungeonFloorTiles_11.asset using Guid(b06ddcfe6e37ddc49a68ce849dd2990b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '920046d7b4c09f21b22ac12967699e52') in 0.017182 seconds
+  Import took 0.020555 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000215 seconds.
+  path: Assets/Palettes/Minifantasy_DungeonFloorTiles_5.asset
+  artifactKey: Guid(add73b872e493a046ba29f70889a4569) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palettes/Minifantasy_DungeonFloorTiles_5.asset using Guid(add73b872e493a046ba29f70889a4569) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5bd4d76010201b53ace62330e3061f4c') in 0.021197 seconds
+  Import took 0.024649 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000226 seconds.
+  path: Assets/Palettes/Minifantasy_DungeonFloorTiles_10.asset
+  artifactKey: Guid(fd513aa7394426241b99eb0687ff3118) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palettes/Minifantasy_DungeonFloorTiles_10.asset using Guid(fd513aa7394426241b99eb0687ff3118) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1fe6f8c52b9d1a484b1a69c2634ea2f4') in 0.019269 seconds
+  Import took 0.023213 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000182 seconds.
+  path: Assets/Palettes/Minifantasy_DungeonFloorTiles_9.asset
+  artifactKey: Guid(8307144ed1647874c9bf29b2f254c8ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palettes/Minifantasy_DungeonFloorTiles_9.asset using Guid(8307144ed1647874c9bf29b2f254c8ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5025388bc53a434dc5b6ebd9fcf12fa') in 0.021139 seconds
+  Import took 0.024574 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000165 seconds.
+  path: Assets/Palettes/Minifantasy_DungeonFloorTiles_8.asset
+  artifactKey: Guid(c47c869b780f0a14c8b46cac4db1b7db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palettes/Minifantasy_DungeonFloorTiles_8.asset using Guid(c47c869b780f0a14c8b46cac4db1b7db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29558bee996952b744c4a5452755f940') in 0.018417 seconds
+  Import took 0.021900 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000168 seconds.
+  path: Assets/Palettes/Minifantasy_DungeonFloorTiles_1.asset
+  artifactKey: Guid(77f5d9d11b3d58a429588765e5c8c4b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palettes/Minifantasy_DungeonFloorTiles_1.asset using Guid(77f5d9d11b3d58a429588765e5c8c4b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c29e1dcbde72f0451d3cbf9a92fbb422') in 0.018907 seconds
+  Import took 0.022187 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000188 seconds.
+  path: Assets/Palettes/Minifantasy_DungeonFloorTiles_3.asset
+  artifactKey: Guid(f4bcad589d7cb574381c1c4cf535468f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palettes/Minifantasy_DungeonFloorTiles_3.asset using Guid(f4bcad589d7cb574381c1c4cf535468f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93c98a90bfd429067aabe60c086c007a') in 0.021770 seconds
+  Import took 0.025039 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000197 seconds.
+  path: Assets/Palettes/Minifantasy_DungeonFloorTiles_7.asset
+  artifactKey: Guid(465bbebc6975afb4c8df49e0bb673fce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palettes/Minifantasy_DungeonFloorTiles_7.asset using Guid(465bbebc6975afb4c8df49e0bb673fce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f6b2d4620026df45996cfad94a6f01a') in 0.018844 seconds
+  Import took 0.022394 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 74.350943 seconds.
+  path: Assets/Imports/Tileset/Minifantasy_DungeonFloorTiles.png
+  artifactKey: Guid(e613500ba629ead4ba50c5b5b7b27d67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imports/Tileset/Minifantasy_DungeonFloorTiles.png using Guid(e613500ba629ead4ba50c5b5b7b27d67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc510e252fe615656114b02086cf8c98') in 0.054061 seconds
+  Import took 0.058962 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001509 seconds.
+  path: Assets/Imports/Tileset/Minifantasy_DungeonFloorTiles.png
+  artifactKey: Guid(e613500ba629ead4ba50c5b5b7b27d67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imports/Tileset/Minifantasy_DungeonFloorTiles.png using Guid(e613500ba629ead4ba50c5b5b7b27d67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc510e252fe615656114b02086cf8c98') in 0.056190 seconds
+  Import took 0.060047 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 25.979546 seconds.
+  path: Assets/Imports/Tileset/Minifantasy_DungeonFloorTiles.png
+  artifactKey: Guid(e613500ba629ead4ba50c5b5b7b27d67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imports/Tileset/Minifantasy_DungeonFloorTiles.png using Guid(e613500ba629ead4ba50c5b5b7b27d67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e74a7eb10ee4aa10d5abcf96215dd303') in 0.048388 seconds
+  Import took 0.054080 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 317.035566 seconds.
+  path: Assets/Tiles/Minifantasy_DungeonFloorTiles_0.asset
+  artifactKey: Guid(7250750bc3c135d4e93715817e698a2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/Minifantasy_DungeonFloorTiles_0.asset using Guid(7250750bc3c135d4e93715817e698a2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '332997d5ba4299fc5642dccbfa1ef2f3') in 0.018666 seconds
+  Import took 0.023572 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000294 seconds.
+  path: Assets/Tiles/Minifantasy_DungeonFloorTiles_6.asset
+  artifactKey: Guid(8562505d8d2ba4a458e3d99b245c202d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/Minifantasy_DungeonFloorTiles_6.asset using Guid(8562505d8d2ba4a458e3d99b245c202d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f905888cf3674c351db78d41a03fb28') in 0.015161 seconds
+  Import took 0.019621 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000204 seconds.
+  path: Assets/Tiles/Minifantasy_DungeonFloorTiles_7.asset
+  artifactKey: Guid(bc27726ae70585e4cbf9cf0d11009ea7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/Minifantasy_DungeonFloorTiles_7.asset using Guid(bc27726ae70585e4cbf9cf0d11009ea7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69e29b53948ef99c9f433b7214245908') in 0.013512 seconds
+  Import took 0.016987 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000205 seconds.
+  path: Assets/Tiles/Minifantasy_DungeonFloorTiles_5.asset
+  artifactKey: Guid(99426d2b4309b034ea9768815a034642) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/Minifantasy_DungeonFloorTiles_5.asset using Guid(99426d2b4309b034ea9768815a034642) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11179f4d86052938c81693f94b1442c7') in 0.013677 seconds
+  Import took 0.017260 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000228 seconds.
+  path: Assets/Tiles/Minifantasy_DungeonFloorTiles_3.asset
+  artifactKey: Guid(953bcd73adae1fb4b85dd7d5212e9752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/Minifantasy_DungeonFloorTiles_3.asset using Guid(953bcd73adae1fb4b85dd7d5212e9752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eab9e50c40a2e463947b0bfa085764bf') in 0.018002 seconds
+  Import took 0.021990 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000206 seconds.
+  path: Assets/Tiles/Minifantasy_DungeonFloorTiles_11.asset
+  artifactKey: Guid(a25cea34973686b4080013f75ec7b12f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/Minifantasy_DungeonFloorTiles_11.asset using Guid(a25cea34973686b4080013f75ec7b12f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d401fddc7872f7ec61d003f1c750f79') in 0.015400 seconds
+  Import took 0.018943 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000226 seconds.
+  path: Assets/Tiles/Minifantasy_DungeonFloorTiles_9.asset
+  artifactKey: Guid(10e8c2afd4c45c24e92efae8448a7f54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/Minifantasy_DungeonFloorTiles_9.asset using Guid(10e8c2afd4c45c24e92efae8448a7f54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd743644938fe40f595aee444ab7b9eda') in 0.017296 seconds
+  Import took 0.020568 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000212 seconds.
+  path: Assets/Tiles/Minifantasy_DungeonFloorTiles_1.asset
+  artifactKey: Guid(41d195bd75be97e41ae31fad8d1633b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/Minifantasy_DungeonFloorTiles_1.asset using Guid(41d195bd75be97e41ae31fad8d1633b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85860d840667b0cbc4134d81f6813b7d') in 0.018141 seconds
+  Import took 0.021515 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000213 seconds.
+  path: Assets/Tiles/Minifantasy_DungeonFloorTiles_8.asset
+  artifactKey: Guid(1e7b3e63d190f824a9fae6f1394451de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/Minifantasy_DungeonFloorTiles_8.asset using Guid(1e7b3e63d190f824a9fae6f1394451de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad979d6c720ee6e1a685e172267d3450') in 0.013181 seconds
+  Import took 0.017121 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000223 seconds.
+  path: Assets/Tiles/Minifantasy_DungeonFloorTiles_4.asset
+  artifactKey: Guid(02e84ef4c43414d4283787ee75d8bb93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/Minifantasy_DungeonFloorTiles_4.asset using Guid(02e84ef4c43414d4283787ee75d8bb93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2af6d18904a9b32f65a1758ccee2bd01') in 0.014960 seconds
+  Import took 0.018483 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000224 seconds.
+  path: Assets/Tiles/Minifantasy_DungeonFloorTiles_10.asset
+  artifactKey: Guid(84f0b3041fe7e5a41a9c36bd1d1e5546) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/Minifantasy_DungeonFloorTiles_10.asset using Guid(84f0b3041fe7e5a41a9c36bd1d1e5546) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ae681379d51c4eea7af6ae47884e39a') in 0.017926 seconds
+  Import took 0.021694 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000198 seconds.
+  path: Assets/Tiles/Minifantasy_DungeonFloorTiles_2.asset
+  artifactKey: Guid(00f8a455ddab003409531c59975c2446) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/Minifantasy_DungeonFloorTiles_2.asset using Guid(00f8a455ddab003409531c59975c2446) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4158afe1c0a7867e2da66e8b80ec9d7b') in 0.016854 seconds
+  Import took 0.020239 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 86.197362 seconds.
+  path: Assets/Palettes/Ground Tiles.prefab
+  artifactKey: Guid(9e300718c9ab02b4e8a002eed6cf1449) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palettes/Ground Tiles.prefab using Guid(9e300718c9ab02b4e8a002eed6cf1449) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec11ee91a879593055ce90cecf2a3130') in 0.005497 seconds
+  Import took 0.009344 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001097 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.42 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.934 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.43 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1819 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 88.0 MB.
+System memory in use after: 88.1 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2289.
+Total: 2.010600 ms (FindLiveObjects: 0.194700 ms CreateObjectMapping: 0.065300 ms MarkObjects: 1.733700 ms  DeleteObjects: 0.016000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001161 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.41 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.980 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.45 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1819 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 88.1 MB.
+System memory in use after: 88.2 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2291.
+Total: 1.925100 ms (FindLiveObjects: 0.184100 ms CreateObjectMapping: 0.064400 ms MarkObjects: 1.660700 ms  DeleteObjects: 0.015000 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
