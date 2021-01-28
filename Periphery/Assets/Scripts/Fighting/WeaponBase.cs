@@ -14,10 +14,22 @@ public abstract class WeaponBase : MonoBehaviour
     protected const float moveScale = 1f;
     protected Rigidbody2D rb;
 
+    private FightingController fightingController;
+    protected Collider2D PlayerCollider { get { return fightingController.gameObject.GetComponent<Collider2D>(); } }
+    protected Vector3 PlayerPos { get { return fightingController.gameObject.transform.position; } }
+    protected bool JoystickIsPressed { get { return fightingController.fightingJoystick.isPressed; } }
+    protected Vector2 JoystickDirection { get { return fightingController.fightingJoystick.Direction; } }
+    //NOTE: JoystickDirection is not normalized, its magnitude is the joystick's magnitude relative to its center
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        fightingController = GameObject.Find("Player").GetComponent<FightingController>();
     }
 
-    public abstract void UpdateWeapon(Vector2 joystickDirection, Vector3 playerPos, bool joystickIsPressed);
+    public abstract void InitWeapon();
+
+    public abstract void UpdateWeapon();
+
+    public abstract void StopWeapon();
 }
