@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Map Layer
+    uniqueID: 718980991
+    locked: 0
+  - name: Players Layer
+    uniqueID: 1904125679
+    locked: 0
+  - name: Weapons Layer
+    uniqueID: 1947262467
+    locked: 0
