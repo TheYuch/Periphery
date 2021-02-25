@@ -15,8 +15,10 @@ public abstract class WeaponBase : MonoBehaviour
     protected Rigidbody2D rb;
 
     private FightingController fightingController;
-    protected Collider2D PlayerCollider { get { return fightingController.gameObject.GetComponent<Collider2D>(); } }
-    protected Vector3 PlayerPos { get { return fightingController.gameObject.transform.position; } }
+
+    protected bool PlayerIsMoving { get { return transform.parent.GetComponent<PlayerMovement>().playerIsMoving; } }
+    protected Collider2D ParentCollider { get { return transform.parent.GetComponent<Collider2D>(); } }
+    protected Vector3 ParentPosition { get { return transform.parent.position; } }
     protected bool JoystickIsPressed { get { return fightingController.fightingJoystick.isPressed; } }
     protected Vector2 JoystickDirection { get { return fightingController.fightingJoystick.Direction; } }
     //NOTE: JoystickDirection is not normalized, its magnitude is the joystick's magnitude relative to its center
@@ -32,4 +34,48 @@ public abstract class WeaponBase : MonoBehaviour
     public abstract void UpdateWeapon();
 
     public abstract void StopWeapon();
+
+    protected virtual List<AbilityExecuter> ReturnCollisionAbilities(string weaponName)
+    {
+        List<AbilityExecuter> abilityList = new List<AbilityExecuter>();
+        switch (weaponName)
+        {
+            case "Sword":
+                abilityList.Add(SwordAbility);
+                break;
+            case "Lance":
+                abilityList.Add(LanceAbility);
+                break;
+            case "Chainball":
+                abilityList.Add(ChainballAbility);
+                break;
+        }
+        return abilityList;
+    }
+    protected IEnumerator returnToOrigin(float moveReturnSpeed, float rotReturnSpeed)
+    {
+        if (transform.position != this.ParentPosition)
+        {
+            while (transform.position != this.ParentPosition)
+            {
+                transform.position = Vector3.Lerp(transform.position, this.ParentPosition, moveReturnSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(Vector2.up), rotReturnSpeed * Time.fixedDeltaTime);   
+                yield return null;
+            }
+        }
+    }
+
+    protected delegate void AbilityExecuter();
+    protected void SwordAbility()
+    {
+        print("bruh");     
+    }
+    protected void LanceAbility()
+    {
+        print("Frank");
+    }
+    protected void ChainballAbility()
+    {
+        print("Monke");
+    }
 }

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Chainball : WeaponBase
 {
@@ -28,5 +28,20 @@ public class Chainball : WeaponBase
     public override void StopWeapon()
     {
         //todo: for chainball, have an animation of returning the chains.
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        print("collided!");
+        foreach (ContactPoint2D pt in collision.contacts)
+        {
+            ExecuteAbilities(base.ReturnCollisionAbilities(pt.otherCollider.gameObject.name));
+        }
+    }
+    private void ExecuteAbilities(List<AbilityExecuter> abilities)
+    {
+        foreach (AbilityExecuter ability in abilities)
+        {
+            ability();
+        }
     }
 }
