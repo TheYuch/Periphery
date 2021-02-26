@@ -204,12 +204,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 50802876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.795, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
-  - {fileID: 384824471}
-  - {fileID: 7979669006734782056}
   - {fileID: 283325123}
+  - {fileID: 7979669006734782056}
+  - {fileID: 384824471}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -478,7 +478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5777425562438516255, guid: 096dd84087e204d19992f4ff7ad68e53, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5777425562438516255, guid: 096dd84087e204d19992f4ff7ad68e53, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1032,6 +1032,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 784239690873140961, guid: da28d309cc2064c51b1b99f36e7b620f, type: 3}
+      propertyPath: m_LinearDrag
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 784239690873140961, guid: da28d309cc2064c51b1b99f36e7b620f, type: 3}
+      propertyPath: m_AngularDrag
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7979669005869111622, guid: da28d309cc2064c51b1b99f36e7b620f, type: 3}
       propertyPath: m_Name
       value: Sword
@@ -1507,6 +1515,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 50802878}
     m_Modifications:
+    - target: {fileID: 2691620228001004264, guid: dd250707d43034f7194c0fc9337f3b55, type: 3}
+      propertyPath: m_Mass
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4484002617373018476, guid: dd250707d43034f7194c0fc9337f3b55, type: 3}
       propertyPath: m_Name
       value: Lance
@@ -1545,7 +1557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4484002617373018477, guid: dd250707d43034f7194c0fc9337f3b55, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4484002617373018477, guid: dd250707d43034f7194c0fc9337f3b55, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

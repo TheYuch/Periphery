@@ -5,8 +5,10 @@ public class Sword : WeaponBase
     private const float swordLength = 1f; //todo: set this based on sprite image length
     private const float returnSpeed = 0.25f;
     private const float rotSpeed = 10f;
+    private const float forceScale = 100f;
+    
     private Vector2 tipPosition { get { return transform.position + transform.up * swordLength; } }
-    private Vector3 localPosition;
+    private bool isReturning;
     private Quaternion prevRotation;
 
     public Collider2D defenseCol;
@@ -17,21 +19,19 @@ public class Sword : WeaponBase
         Physics2D.IgnoreCollision(this.defenseCol, base.ParentCollider);
         Physics2D.IgnoreCollision(this.offenseCol, base.ParentCollider);
         transform.localPosition = Vector3.zero;
-        localPosition = transform.localPosition;
         transform.rotation = Quaternion.identity;
         prevRotation = transform.rotation;
     }
 
     public override void UpdateWeapon()
     {
-
         if (!base.JoystickIsPressed)
         {
-            if (base.PlayerIsMoving)
+            if (base.PlayerIsMoving && !isReturning)
             {
-                StartCoroutine(base.returnToOrigin(returnSpeed, rotSpeed));
+                StartCoroutine(base.ReturnToPlayer(returnSpeed, isReturning));
             }
-
+            transform.rotation = prevRotation;
             return;
         }
 
@@ -41,14 +41,12 @@ public class Sword : WeaponBase
         //note transform.position is position of hilt of weapon
         if (!forward.Equals(Vector2.zero))
         {
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg + 90);
+            base.rb.MoveRotation(Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg + 90);
         }
 
         //translation (set transform.position so that tip position is equal to joystickrelativepos
-        transform.position += (Vector3)(joystickRelativePos - tipPosition) + base.ParentPosition;
-
-        localPosition = transform.localPosition;
-        //prevRotation = transform.rotation;
+        base.rb.MovePosition(transform.position + ((Vector3)(joystickRelativePos - tipPosition) + base.ParentPosition));
+        prevRotation = transform.rotation;
     }
 
     public override void StopWeapon()
@@ -59,9 +57,9 @@ public class Sword : WeaponBase
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("collided!");
         foreach (ContactPoint2D pt in collision.contacts)
         {
+            pt.otherRigidbody.AddForceAtPosition(pt.relativeVelocity / forceScale, pt.point);
             ExecuteAbilities(base.ReturnCollisionAbilities(pt.otherCollider.gameObject.name));
         }
     }

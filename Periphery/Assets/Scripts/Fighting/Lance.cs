@@ -6,10 +6,12 @@ public class Lance : WeaponBase
     private Vector3 localPosition;
     private Quaternion prevRotation;
     private float joystickMag = 0f;
+    private bool isReturning;
 
     private const float rotSpeed = 10f;
-    private const float returnSpeed = 0.25f;
+    private const float returnSpeed = 10f;
     private const int angleOffset = 90;
+    private const float forceScale = 10f;
 
     public Collider2D defenseCol;
     public Collider2D offenseCol;
@@ -22,6 +24,7 @@ public class Lance : WeaponBase
         transform.localPosition = Vector3.zero;
         localPosition = transform.localPosition;
         prevRotation = transform.rotation;
+        isReturning = false;
     }
 
     public override void UpdateWeapon()
@@ -29,8 +32,8 @@ public class Lance : WeaponBase
         if (!base.JoystickIsPressed)
         {
             if(base.PlayerIsMoving)
-            {
-                StartCoroutine(base.returnToOrigin(returnSpeed, rotSpeed));
+            { 
+                StartCoroutine(base.ReturnToPlayer(returnSpeed, isReturning));
             }       
             transform.rotation = prevRotation;
             return;
@@ -52,9 +55,9 @@ public class Lance : WeaponBase
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("collided!");
         foreach (ContactPoint2D pt in collision.contacts)
         {
+            pt.otherRigidbody.AddForceAtPosition(pt.relativeVelocity / forceScale, pt.point);
             ExecuteAbilities(base.ReturnCollisionAbilities(pt.otherCollider.gameObject.name));
         }
     }

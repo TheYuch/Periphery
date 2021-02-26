@@ -52,16 +52,24 @@ public abstract class WeaponBase : MonoBehaviour
         }
         return abilityList;
     }
-    protected IEnumerator returnToOrigin(float moveReturnSpeed, float rotReturnSpeed)
+    protected IEnumerator ReturnToPlayer(float moveReturnSpeed, bool runningFlag)
     {
-        if (transform.position != this.ParentPosition)
+        runningFlag = true;
+        while (transform.position != this.ParentPosition)
         {
-            while (transform.position != this.ParentPosition)
+            if (Mathf.Abs(transform.position.magnitude - this.ParentPosition.magnitude) <= 0.00005f)
             {
-                transform.position = Vector3.Lerp(transform.position, this.ParentPosition, moveReturnSpeed * Time.deltaTime);
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(Vector2.up), rotReturnSpeed * Time.fixedDeltaTime);   
+                rb.position = this.ParentPosition;
+                runningFlag = false;
+                yield break;
+            }
+            else
+            {
+                rb.position = Vector3.Lerp(this.rb.position, this.ParentPosition, moveReturnSpeed * Time.deltaTime);
                 yield return null;
             }
+            //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(Vector2.up), rotReturnSpeed * Time.fixedDeltaTime);                 
+     
         }
     }
 
