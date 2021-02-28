@@ -1,17 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 
 public class Lance : WeaponBase
 {
-    private Vector3 localPosition;
     private Quaternion prevRotation;
-    private float joystickMag = 0f;
-    private bool isReturning;
 
     private const float rotSpeed = 10f;
-    private const float returnSpeed = 10f;
     private const int angleOffset = 90;
-    private const float forceScale = 10f;
 
     public Collider2D defenseCol;
     public Collider2D offenseCol;
@@ -22,29 +16,35 @@ public class Lance : WeaponBase
         Physics2D.IgnoreCollision(this.offenseCol, base.ParentCollider);
         transform.rotation = Quaternion.identity;
         transform.localPosition = Vector3.zero;
-        localPosition = transform.localPosition;
         prevRotation = transform.rotation;
-        isReturning = false;
     }
 
     public override void UpdateWeapon()
     {
-        if (!base.JoystickIsPressed)
+        if (isEnemy)
         {
-            if(base.PlayerIsMoving)
-            { 
-                StartCoroutine(base.ReturnToPlayer(returnSpeed, isReturning));
-            }       
-            transform.rotation = prevRotation;
+            if (true) //TODO: replace with if not fighting (done by AI)
+            {
+                base.UpdateReturnToParent();
+            }
             return;
         }
+        else
+        {
+            if (!base.JoystickIsPressed)
+            {
+                base.UpdateReturnToParent();
 
-        Quaternion target = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(base.JoystickDirection.y, base.JoystickDirection.x) - angleOffset);
-        gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, target, Time.fixedDeltaTime * rotSpeed);
-      
-        joystickMag = base.JoystickDirection.magnitude;       
-        transform.position = base.ParentPosition + (transform.up * joystickMag * WeaponBase.moveScale);
-        localPosition = transform.localPosition;
+                transform.rotation = prevRotation;
+                return;
+            }
+
+            Quaternion target = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(base.JoystickDirection.y, base.JoystickDirection.x) - angleOffset);
+            base.rb.MoveRotation(Quaternion.Lerp(gameObject.transform.rotation, target, Time.fixedDeltaTime * rotSpeed).eulerAngles.z);
+
+            float joystickMag = base.JoystickDirection.magnitude;
+            base.rb.MovePosition(base.ParentPosition + (transform.up * joystickMag * WeaponBase.moveScale));
+        }
         prevRotation = transform.rotation;
     }
 
@@ -53,19 +53,27 @@ public class Lance : WeaponBase
         Physics2D.IgnoreCollision(this.defenseCol, base.ParentCollider, false); //undo ignore
         Physics2D.IgnoreCollision(this.offenseCol, base.ParentCollider, false);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) //TODO: do defensive/offensive weapon collisions
     {
+        //check Sword.cs OnCollisionEnter2D code comments for explanation
         foreach (ContactPoint2D pt in collision.contacts)
         {
-            pt.otherRigidbody.AddForceAtPosition(pt.relativeVelocity / forceScale, pt.point);
-            ExecuteAbilities(base.ReturnCollisionAbilities(pt.otherCollider.gameObject.name));
-        }
-    }
-    private void ExecuteAbilities(List<AbilityExecuter> abilities)
-    {
-        foreach (AbilityExecuter ability in abilities)
-        {
-            ability();
+            if (pt.collider.transform.parent != null)
+            {
+                if (pt.collider.transform.parent.tag.Equals("ChainBall"))
+                    continue;
+
+                if (pt.rigidbody.velocity.magnitude > pt.otherRigidbody.velocity.magnitude)
+                {
+                    pt.collider.gameObject.GetComponent<WeaponBase>().ParentRB.AddForceAtPosition(-pt.relativeVelocity * 100, pt.point);
+                    pt.rigidbody.velocity = Vector2.zero;
+                    pt.rigidbody.angularVelocity = 0f;
+                }
+            }
+            else
+            {
+                pt.rigidbody.AddForceAtPosition(pt.relativeVelocity * 100, pt.point);
+            }
         }
     }
 }

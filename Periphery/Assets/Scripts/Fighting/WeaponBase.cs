@@ -16,15 +16,21 @@ public abstract class WeaponBase : MonoBehaviour
 
     private FightingController fightingController;
 
-    protected bool PlayerIsMoving { get { return transform.parent.GetComponent<PlayerMovement>().playerIsMoving; } }
     protected Collider2D ParentCollider { get { return transform.parent.GetComponent<Collider2D>(); } }
     protected Vector3 ParentPosition { get { return transform.parent.position; } }
     protected bool JoystickIsPressed { get { return fightingController.fightingJoystick.isPressed; } }
     protected Vector2 JoystickDirection { get { return fightingController.fightingJoystick.Direction; } }
     //NOTE: JoystickDirection is not normalized, its magnitude is the joystick's magnitude relative to its center
 
+    public Rigidbody2D ParentRB; //accessed by weapon collisions
+
+    private const float ReturnSpeed = 10f;
+
+    public bool isEnemy;
+
     private void Awake()
     {
+        ParentRB = transform.parent.GetComponent<Rigidbody2D>();
         rb = GetComponent<Rigidbody2D>();
         fightingController = GameObject.Find("Player").GetComponent<FightingController>();
     }
@@ -35,55 +41,14 @@ public abstract class WeaponBase : MonoBehaviour
 
     public abstract void StopWeapon();
 
-    protected virtual List<AbilityExecuter> ReturnCollisionAbilities(string weaponName)
+    protected void UpdateReturnToParent()
     {
-        List<AbilityExecuter> abilityList = new List<AbilityExecuter>();
-        switch (weaponName)
+        if (Vector2.Distance(transform.position, ParentPosition) <= 0.00005f)
         {
-            case "Sword":
-                abilityList.Add(SwordAbility);
-                break;
-            case "Lance":
-                abilityList.Add(LanceAbility);
-                break;
-            case "Chainball":
-                abilityList.Add(ChainballAbility);
-                break;
+            transform.position = this.ParentPosition;
+            return;
         }
-        return abilityList;
-    }
-    protected IEnumerator ReturnToPlayer(float moveReturnSpeed, bool runningFlag)
-    {
-        runningFlag = true;
-        while (transform.position != this.ParentPosition)
-        {
-            if (Mathf.Abs(transform.position.magnitude - this.ParentPosition.magnitude) <= 0.00005f)
-            {
-                rb.position = this.ParentPosition;
-                runningFlag = false;
-                yield break;
-            }
-            else
-            {
-                rb.position = Vector3.Lerp(this.rb.position, this.ParentPosition, moveReturnSpeed * Time.deltaTime);
-                yield return null;
-            }
-            //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(Vector2.up), rotReturnSpeed * Time.fixedDeltaTime);                 
-     
-        }
-    }
 
-    protected delegate void AbilityExecuter();
-    protected void SwordAbility()
-    {
-        print("bruh");     
-    }
-    protected void LanceAbility()
-    {
-        print("Frank");
-    }
-    protected void ChainballAbility()
-    {
-        print("Monke");
+        transform.position = Vector3.Lerp(this.transform.position, this.ParentPosition, ReturnSpeed * Time.deltaTime);
     }
 }

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 
 public class Chainball : WeaponBase
 {
@@ -15,13 +14,20 @@ public class Chainball : WeaponBase
 
     public override void UpdateWeapon()
     {
-        if (base.JoystickIsPressed)
+        if (base.isEnemy)
         {
-            Quaternion target = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(base.JoystickDirection.y, base.JoystickDirection.x) - 90);
-            chainHandle.rotation = Quaternion.Lerp(chainHandle.rotation, target, Time.fixedDeltaTime * 7);
+            //fighting code for AI enemy
+        }
+        else
+        {
+            if (base.JoystickIsPressed) //probably not going to use rb.MoveRotation because unnecessary
+            {
+                Quaternion target = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(base.JoystickDirection.y, base.JoystickDirection.x) - 90);
+                chainHandle.rotation = Quaternion.Lerp(chainHandle.rotation, target, Time.fixedDeltaTime * 7);
 
-            float magnitude = base.JoystickDirection.magnitude;
-            ballSpring.dampingRatio = 1f - (magnitude * 0.3f);
+                float magnitude = base.JoystickDirection.magnitude;
+                ballSpring.dampingRatio = 1f - (magnitude * 0.3f);
+            }
         }
     }
 
@@ -29,19 +35,28 @@ public class Chainball : WeaponBase
     {
         //todo: for chainball, have an animation of returning the chains.
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision) //TODO: do defensive/offensive weapon collisions
     {
-        print("collided!");
+        //check Sword.cs OnCollisionEnter2D code comments for explanation
         foreach (ContactPoint2D pt in collision.contacts)
         {
-            ExecuteAbilities(base.ReturnCollisionAbilities(pt.otherCollider.gameObject.name));
-        }
-    }
-    private void ExecuteAbilities(List<AbilityExecuter> abilities)
-    {
-        foreach (AbilityExecuter ability in abilities)
-        {
-            ability();
+            if (pt.collider.transform.parent != null)
+            {
+                if (pt.collider.transform.parent.tag.Equals("ChainBall"))
+                    continue;
+
+                if (pt.rigidbody.velocity.magnitude > pt.otherRigidbody.velocity.magnitude)
+                {
+                    pt.collider.gameObject.GetComponent<WeaponBase>().ParentRB.AddForceAtPosition(-pt.relativeVelocity * 100, pt.point);
+                    pt.rigidbody.velocity = Vector2.zero;
+                    pt.rigidbody.angularVelocity = 0f;
+                }
+            }
+            else
+            {
+                pt.rigidbody.AddForceAtPosition(pt.relativeVelocity * 100, pt.point);
+            }
         }
     }
 }

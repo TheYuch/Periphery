@@ -2,7 +2,7 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     private DynamicJoystick moveJoystick;
 
     private Rigidbody2D rb;
@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Quaternion prevRotation;
 
-    public bool playerIsMoving; //Will be registered as "moving" even when joystick magnitude is 0
+    private bool playerIsMoving; //Will be registered as "moving" even when joystick magnitude is 0
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();

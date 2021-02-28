@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4839970726925596446}
   m_Layer: 0
   m_Name: Offensive Collider
-  m_TagString: Untagged
+  m_TagString: ChainBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 875868975539995585}
   m_Layer: 0
   m_Name: Chainball Chain Link 6
-  m_TagString: Untagged
+  m_TagString: ChainBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 1627724408088345534}
   m_Layer: 0
   m_Name: Chainball Handle Pivot
-  m_TagString: Untagged
+  m_TagString: ChainBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 7854679136081539520}
   m_Layer: 0
   m_Name: Chainball Chain Link 2
-  m_TagString: Untagged
+  m_TagString: ChainBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 2119586642034057819}
   m_Layer: 0
   m_Name: Chainball Chain Base
-  m_TagString: Untagged
+  m_TagString: ChainBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -531,7 +531,7 @@ GameObject:
   - component: {fileID: 8352661077547864143}
   m_Layer: 0
   m_Name: Chainball Chain Link 4
-  m_TagString: Untagged
+  m_TagString: ChainBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -677,7 +677,7 @@ GameObject:
   - component: {fileID: 4061307711693971210}
   m_Layer: 0
   m_Name: Chainball Chain Link 5
-  m_TagString: Untagged
+  m_TagString: ChainBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -823,7 +823,7 @@ GameObject:
   - component: {fileID: 6394703115330161596}
   m_Layer: 0
   m_Name: Chainball Chain Link 1
-  m_TagString: Untagged
+  m_TagString: ChainBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -967,7 +967,7 @@ GameObject:
   - component: {fileID: 923749799056356532}
   m_Layer: 0
   m_Name: Chainball Handle
-  m_TagString: Untagged
+  m_TagString: ChainBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1110,6 +1110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ef5def6ad3542e58a512c719a980bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ParentRB: {fileID: 0}
+  isEnemy: 0
 --- !u!1 &7747589258195465833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,7 +1127,7 @@ GameObject:
   - component: {fileID: 8827495797092021397}
   m_Layer: 0
   m_Name: Chainball Ball
-  m_TagString: Untagged
+  m_TagString: ChainBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1276,7 +1278,7 @@ GameObject:
   - component: {fileID: 1306240462495204405}
   m_Layer: 0
   m_Name: Chainball Chain Link 3
-  m_TagString: Untagged
+  m_TagString: ChainBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

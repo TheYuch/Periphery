@@ -1,21 +1,24 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
+
 public class Sword : WeaponBase
 {
-    private const float swordLength = 1f; //todo: set this based on sprite image length
-    private const float returnSpeed = 0.25f;
-    private const float rotSpeed = 10f;
-    private const float forceScale = 100f;
-    
+    private const float swordLength = 1.5f; //TODO: set this based on sprite image length
+        //note: this is only for the pixel sword with parent object scale of 0.8 for everything
+
     private Vector2 tipPosition { get { return transform.position + transform.up * swordLength; } }
-    private bool isReturning;
     private Quaternion prevRotation;
 
     public Collider2D defenseCol;
     public Collider2D offenseCol;
+
+    /*private void OnDrawGizmos() //used for testing and changing swordLength to sprite image length only
+    {
+        Gizmos.DrawSphere(tipPosition, 0.1f);
+    }*/
+
     public override void InitWeapon()
     {
-        //todo: make weapon point in the same direction as the previous one when weapon switched
+        //TODO: make weapon point in the same direction as the previous one when weapon switched
         Physics2D.IgnoreCollision(this.defenseCol, base.ParentCollider);
         Physics2D.IgnoreCollision(this.offenseCol, base.ParentCollider);
         transform.localPosition = Vector3.zero;
@@ -25,27 +28,36 @@ public class Sword : WeaponBase
 
     public override void UpdateWeapon()
     {
-        if (!base.JoystickIsPressed)
+        if (base.isEnemy)
         {
-            if (base.PlayerIsMoving && !isReturning)
+            if (true) //TODO: replace with if not fighting (done by AI)
             {
-                StartCoroutine(base.ReturnToPlayer(returnSpeed, isReturning));
+                base.UpdateReturnToParent();
             }
-            transform.rotation = prevRotation;
             return;
         }
-
-        Vector2 joystickRelativePos = base.JoystickDirection * WeaponBase.moveScale;
-        //rotation
-        Vector3 forward = (Vector2)(transform.position - base.ParentPosition) - joystickRelativePos;
-        //note transform.position is position of hilt of weapon
-        if (!forward.Equals(Vector2.zero))
+        else
         {
-            base.rb.MoveRotation(Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg + 90);
-        }
+            if (!base.JoystickIsPressed)
+            {
+                base.UpdateReturnToParent();
 
-        //translation (set transform.position so that tip position is equal to joystickrelativepos
-        base.rb.MovePosition(transform.position + ((Vector3)(joystickRelativePos - tipPosition) + base.ParentPosition));
+                transform.rotation = prevRotation;
+                return;
+            }
+
+            Vector2 joystickRelativePos = base.JoystickDirection * WeaponBase.moveScale;
+            //rotation
+            Vector3 forward = (Vector2)(transform.position - base.ParentPosition) - joystickRelativePos;
+            //note transform.position is position of hilt of weapon
+            if (!forward.Equals(Vector2.zero))
+            {
+                base.rb.MoveRotation(Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg + 90);
+            }
+
+            //translation (set transform.position so that tip position is equal to joystickrelativepos
+            base.rb.MovePosition(transform.position + ((Vector3)(joystickRelativePos - tipPosition) + base.ParentPosition));
+        }
         prevRotation = transform.rotation;
     }
 
@@ -55,19 +67,34 @@ public class Sword : WeaponBase
         Physics2D.IgnoreCollision(this.offenseCol, base.ParentCollider, false);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) //TODO: do defensive/offensive weapon collisions
     {
         foreach (ContactPoint2D pt in collision.contacts)
         {
-            pt.otherRigidbody.AddForceAtPosition(pt.relativeVelocity / forceScale, pt.point);
-            ExecuteAbilities(base.ReturnCollisionAbilities(pt.otherCollider.gameObject.name));
-        }
-    }
-    private void ExecuteAbilities(List<AbilityExecuter> abilities)
-    {
-        foreach(AbilityExecuter ability in abilities)
-        {
-            ability();
+            //note: pt.other... is the ...(component) of this current weapon
+            //BUT: because "OnCollisionEnter2D" is called after the collision happened,
+            //the velocities have already updated. Thus, according to Newton's laws,
+            //if the current weapon moved and collided with say the enemy weaepon,
+            //even though the current weapon had velocity magnitude, when this function is called,
+            //the enemy weapon would have greater velocity magnitude.
+            if (pt.collider.transform.parent != null) //if what is collided is the weapon of an enemy
+            {
+                if (pt.collider.transform.parent.tag.Equals("ChainBall")) //chainball has different weapon collision rules (TODO: tbd)
+                    continue;
+
+                //print(pt.collider.gameObject.name + "'s magnitude after collision: " + pt.rigidbody.velocity.magnitude);
+                //print(pt.otherCollider.gameObject.name + "'s magnitude after collision: " + pt.otherRigidbody.velocity.magnitude);
+                if (pt.rigidbody.velocity.magnitude > pt.otherRigidbody.velocity.magnitude) //note: flipped b/c collision already happened (reason above)
+                {
+                    pt.collider.gameObject.GetComponent<WeaponBase>().ParentRB.AddForceAtPosition(-pt.relativeVelocity * 100, pt.point); //-pt.relativeVelocity for same reason as described above;
+                    pt.rigidbody.velocity = Vector2.zero;
+                    pt.rigidbody.angularVelocity = 0f;
+                }
+            }
+            else
+            {
+                pt.rigidbody.AddForceAtPosition(pt.relativeVelocity * 100, pt.point);
+            }
         }
     }
 }
