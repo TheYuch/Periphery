@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-
-public class FightingController : MonoBehaviour
+using System.Collections;
+public class FightingController : MonoBehaviour, IDamageable 
 {
     [SerializeField] public Joystick fightingJoystick;
 
@@ -10,8 +10,17 @@ public class FightingController : MonoBehaviour
     private WeaponBase currentWeapon;
     private int curWeaponIdx;
 
+    private Color thisColor;
+    private SpriteRenderer rend;
+
+    private int maxHealth = 5;
+    private int currentHealth;
+
+    public HealthBar healthBar;
     private void Awake()
     {
+        rend = GetComponent<SpriteRenderer>();
+        thisColor = rend.color;
         allWeapons = new GameObject[transform.childCount];
         int i = 0;
         foreach (Transform child in transform)
@@ -37,11 +46,43 @@ public class FightingController : MonoBehaviour
 
     private void Start()
     {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         SwitchWeapon(0);
     }
 
     private void FixedUpdate()
     {
         currentWeapon.UpdateWeapon();
+    }
+
+    //StartCoroutine(FlashDamage(0.1f, Color.red, thisColor));
+
+    void IDamageable.takeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+    }
+
+    IEnumerator IDamageable.damageFlash(float speed, Color damageColor, params Color[] returnColor)
+    {
+        if (returnColor.Length == 0)
+        { 
+            rend.color = damageColor;
+            while (rend.color != thisColor)
+            {
+                rend.color = Color.Lerp(rend.color, thisColor, Mathf.PingPong(Time.time, speed));
+                yield return null;
+            }
+        } 
+        else
+        {
+            rend.color = damageColor;
+            while (rend.color != returnColor[0])
+            {
+                rend.color = Color.Lerp(rend.color, returnColor[0], Mathf.PingPong(Time.time, speed));
+                yield return null;
+            }
+        }        
     }
 }

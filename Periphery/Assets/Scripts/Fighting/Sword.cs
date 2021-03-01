@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class Sword : WeaponBase
 {
@@ -7,6 +8,7 @@ public class Sword : WeaponBase
 
     private Vector2 tipPosition { get { return transform.position + transform.up * swordLength; } }
     private Quaternion prevRotation;
+    private List<ContactPoint2D> collisionsCopy = new List<ContactPoint2D>();
 
     public Collider2D defenseCol;
     public Collider2D offenseCol;
@@ -69,8 +71,10 @@ public class Sword : WeaponBase
 
     private void OnCollisionEnter2D(Collision2D collision) //TODO: do defensive/offensive weapon collisions
     {
+        collisionsCopy.Clear();
         foreach (ContactPoint2D pt in collision.contacts)
         {
+            collisionsCopy.Add(pt);
             //note: pt.other... is the ...(component) of this current weapon
             //BUT: because "OnCollisionEnter2D" is called after the collision happened,
             //the velocities have already updated. Thus, according to Newton's laws,
@@ -85,15 +89,31 @@ public class Sword : WeaponBase
                 //print(pt.collider.gameObject.name + "'s magnitude after collision: " + pt.rigidbody.velocity.magnitude);
                 //print(pt.otherCollider.gameObject.name + "'s magnitude after collision: " + pt.otherRigidbody.velocity.magnitude);
                 if (pt.rigidbody.velocity.magnitude > pt.otherRigidbody.velocity.magnitude) //note: flipped b/c collision already happened (reason above)
-                {
+                { 
+
                     pt.collider.gameObject.GetComponent<WeaponBase>().ParentRB.AddForceAtPosition(-pt.relativeVelocity * 100, pt.point); //-pt.relativeVelocity for same reason as described above;
                     pt.rigidbody.velocity = Vector2.zero;
                     pt.rigidbody.angularVelocity = 0f;
+                    pt.rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
                 }
             }
             else
             {
+                Color tmp = new Color(166, 25, 15);
+                StartCoroutine(pt.collider.gameObject.GetComponent<IDamageable>().damageFlash(0.1f, tmp));
                 pt.rigidbody.AddForceAtPosition(pt.relativeVelocity * 100, pt.point);
+            }
+        }
+    }
+
+    private void OnCollisionExit2D()
+    {
+        print(collisionsCopy);
+        foreach(ContactPoint2D pt in this.collisionsCopy)
+        {
+            if(pt.collider.transform.parent == null)
+            {
+                pt.collider.gameObject.GetComponent<IDamageable>().takeDamage(1);
             }
         }
     }

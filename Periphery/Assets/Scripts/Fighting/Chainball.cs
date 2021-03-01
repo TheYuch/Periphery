@@ -43,7 +43,7 @@ public class Chainball : WeaponBase
         {
             if (pt.collider.transform.parent != null)
             {
-                if (pt.collider.transform.parent.tag.Equals("ChainBall"))
+                if (pt.collider.transform.parent.tag.Equals("ChainBall")) //TODO: Don't use tags. Fix Chainball collision
                     continue;
 
                 if (pt.rigidbody.velocity.magnitude > pt.otherRigidbody.velocity.magnitude)

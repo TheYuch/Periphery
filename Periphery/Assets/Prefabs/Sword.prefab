@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7811339238262145478}
   m_Layer: 0
   m_Name: Sword
-  m_TagString: Sword
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,6 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581aa414a341e4903825eac429d1e106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ParentRB: {fileID: 0}
+  isEnemy: 0
   defenseCol: {fileID: 7811339238262145478}
   offenseCol: {fileID: 3217528379273864033}
 --- !u!68 &3217528379273864033
