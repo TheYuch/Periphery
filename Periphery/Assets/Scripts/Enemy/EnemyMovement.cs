@@ -7,7 +7,8 @@ public class EnemyMovement : MonoBehaviour
     public GameObject player;
 
     // enemy properties
-    int range = 500;
+    public int range = 500;
+    public int speed = 3;
 
     // tilemap properties
     private int[,] map;
@@ -63,7 +64,7 @@ public class EnemyMovement : MonoBehaviour
 
         Vector3 cur = transform.position;
         Vector3 nxt = tilemap.GetCellCenterWorld((Vector3Int) nextPosition);
-        transform.position = Vector3.MoveTowards(cur, nxt, Time.deltaTime);
+        transform.position = Vector3.MoveTowards(cur, nxt, speed * Time.deltaTime);
     }
 
     private bool CheckPlayerVisible()
