@@ -17,6 +17,7 @@ public class EnemyFighting : MonoBehaviour, IDamageable
     private void Awake()
     {
         currentWeapon = transform.GetChild(0).GetComponent<WeaponBase>();
+        rend = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
