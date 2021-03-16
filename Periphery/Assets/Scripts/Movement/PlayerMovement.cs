@@ -3,6 +3,8 @@
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
+    //public Vector3 targetPos; //To reduce Lerp jitter; every weapon wielding entity will need this variable
+
     private DynamicJoystick moveJoystick;
 
     private Rigidbody2D rb;
@@ -40,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = prevRotation;
         }
         Vector2 movement = new Vector2(moveJoystick.Horizontal, moveJoystick.Vertical);
+        //targetPos = rb.position + movement * moveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 }

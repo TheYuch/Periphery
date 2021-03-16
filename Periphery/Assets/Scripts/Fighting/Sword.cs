@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class Sword : WeaponBase
@@ -10,6 +11,8 @@ public class Sword : WeaponBase
     private Quaternion prevRotation;
     private List<ContactPoint2D> collisionsCopy = new List<ContactPoint2D>();
 
+    public bool canSpin = false;
+    public GameObject weaponRing;
     public Collider2D defenseCol;
     public Collider2D offenseCol;
 
@@ -26,6 +29,7 @@ public class Sword : WeaponBase
         transform.localPosition = Vector3.zero;
         transform.rotation = Quaternion.identity;
         prevRotation = transform.rotation;
+        StartCoroutine(SpawnBladeWind());
     }
 
     public override void UpdateWeapon()
@@ -116,5 +120,21 @@ public class Sword : WeaponBase
                 pt.collider.gameObject.GetComponent<IDamageable>().takeDamage(1);
             }
         }
+    }
+
+    private IEnumerator SpawnBladeWind()
+    {
+        yield return new WaitForSeconds(1f);
+        for(int i=0; i<6; i++)
+        {
+            GameObject weaponInstance = Instantiate(weaponRing) as GameObject;
+            SpinBehavior weaponInstanceCode = weaponInstance.GetComponent<SpinBehavior>();
+            weaponInstanceCode.parent = this.ParentCollider.gameObject;
+            weaponInstanceCode.index = i;
+            //print(i);
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return new WaitForSeconds(0f);
+        canSpin = true;
     }
 }
