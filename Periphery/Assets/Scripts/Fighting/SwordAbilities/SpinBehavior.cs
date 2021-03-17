@@ -43,7 +43,7 @@ public class SpinBehavior : MonoBehaviour
         transform.localEulerAngles = new Vector3(0, 0, currAngle + angleOffset - 90f + angularVelocity * Time.deltaTime);
         StartCoroutine(Wait(0.5f));     
     }
-    private IEnumerator fadeAlpha(float fadeTo, float fadeDur)
+    private IEnumerator FadeAlpha(float fadeTo, float fadeDur)
     {
         isFading = true;
         float t = 0;
@@ -68,7 +68,7 @@ public class SpinBehavior : MonoBehaviour
         currAngle += angularVelocity * Time.deltaTime;
         if (!isFading)
         {
-            StartCoroutine(fadeAlpha(1f, fadeTime));
+            StartCoroutine(FadeAlpha(1f, fadeTime));
         }
     }
 
