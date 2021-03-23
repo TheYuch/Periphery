@@ -7,6 +7,7 @@ public class Lance : WeaponBase
     private const float rotSpeed = 10f;
     private const int angleOffset = 90;
 
+    public GameObject razeAbility;
     public Collider2D defenseCol;
     public Collider2D offenseCol;
     public override void InitWeapon()
@@ -17,6 +18,7 @@ public class Lance : WeaponBase
         transform.rotation = Quaternion.identity;
         transform.localPosition = Vector3.zero;
         prevRotation = transform.rotation;
+        InitRaze();
     }
 
     public override void UpdateWeapon()
@@ -75,5 +77,11 @@ public class Lance : WeaponBase
                 pt.rigidbody.AddForceAtPosition(pt.relativeVelocity * 100, pt.point);
             }
         }
+    }
+
+    private void InitRaze()
+    {
+        GameObject raze = Instantiate(razeAbility, transform.position, Quaternion.identity);
+        raze.GetComponent<ImpactIndicator>().parent = this.gameObject;
     }
 }

@@ -101,7 +101,7 @@ MonoBehaviour:
   circleFillScreen: 0
   rend: {fileID: 5028077580820214093}
   parent: {fileID: 0}
-  fill: {fileID: 0}
+  fill: {fileID: 4710602733839042547, guid: 7b3f6d0115d243a42988b029477fc9c2, type: 3}
 --- !u!120 &5028077580820214093
 LineRenderer:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class ImpactIndicator : MonoBehaviour //play gong sound when ability acti
     private void Start()
     {
         startPos = parent.transform.position;
-        Instantiate(fill, startPos, Quaternion.identity);
+        StartCoroutine(Fill());
     }
 
     private void Update()
@@ -67,6 +67,15 @@ public class ImpactIndicator : MonoBehaviour //play gong sound when ability acti
             rend.SetColors(c, c);
             yield return null;
         }
+        Destroy(gameObject);
+    }
+
+    private IEnumerator Fill()
+    {
+        GameObject fillClone = Instantiate(fill, startPos, Quaternion.identity);
+        fillClone.GetComponent<FillBehavior>().radius = radius;
+        fillClone.transform.parent = transform;
+        yield return new WaitUntil(() => fillClone.GetComponent<FillBehavior>().shouldDestroy == true);
         Destroy(gameObject);
     }
 }

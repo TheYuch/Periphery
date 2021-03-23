@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4760059857266980172}
   - component: {fileID: 4661365046831554320}
+  - component: {fileID: 1749397156458308201}
   m_Layer: 0
   m_Name: Lance Render
   m_TagString: Untagged
@@ -82,6 +83,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1749397156458308201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2242825894668774351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5747ae53350c9794c83ce65de22b7b7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisTex: {fileID: 2800000, guid: d50f554d2b8cd6d42bc6f86c25b5394e, type: 3}
 --- !u!1 &4484002617373018476
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ParentRB: {fileID: 0}
   isEnemy: 0
+  razeAbility: {fileID: 0}
   defenseCol: {fileID: 4285534266067483853}
   offenseCol: {fileID: 3706254831204525019}
 --- !u!50 &2691620228001004264

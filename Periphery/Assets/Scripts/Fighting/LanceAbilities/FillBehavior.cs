@@ -7,10 +7,11 @@ public class FillBehavior : MonoBehaviour //Should always be paired with RazeInd
     public GameObject camGameObj;
     public GameObject razeIndicator;
     public GameObject meteorEffect;
+    public float radius;
+    public bool shouldDestroy = false;
 
     private float finalSize;
     private float fillSpeed;
-    private float radius = 4f;
     private float startTime;
     private bool isFading;
     private Vector3 finalSizeVector;
@@ -20,7 +21,7 @@ public class FillBehavior : MonoBehaviour //Should always be paired with RazeInd
     private const float quakeShakeDur = 1.5f;
     private const float quakeShakeMag = 0.08f;
     private const float m_impactShakeDur = 0.25f;
-    private const float m_impactShakeMag = 0.1f;
+    private const float m_impactShakeMag = 0.075f;
     private const float meteorDelay = 0.1f;
     private const int numOfMeteors = 15;
 
@@ -35,7 +36,6 @@ public class FillBehavior : MonoBehaviour //Should always be paired with RazeInd
     {
         startTime = Time.time;
         transform.localScale = Vector3.zero;
-        radius = GameObject.Find("RazeIndicator").GetComponent<ImpactIndicator>().radius;
         finalSize = radius * 2f;        
         finalSizeVector = new Vector3(finalSize, finalSize, 0);
     }
@@ -52,7 +52,7 @@ public class FillBehavior : MonoBehaviour //Should always be paired with RazeInd
         {
             if(!isFading)
             {
-                Destroy(GameObject.Find("RazeIndicator"));
+                GetComponentInParent<LineRenderer>().enabled = false;
                 StartCoroutine(Fade(1f, 0.5f));
             }
         }
@@ -85,6 +85,6 @@ public class FillBehavior : MonoBehaviour //Should always be paired with RazeInd
             camGameObj.GetComponent<CameraShake>().TriggerShake(m_impactShakeDur, 1.5f, m_impactShakeMag);
             yield return new WaitForSeconds(meteorDelay); //TODO: Add indicator for meteor impact area
         }
-        Destroy(gameObject);
+        shouldDestroy = true;
     }
 }

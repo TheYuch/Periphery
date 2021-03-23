@@ -10,16 +10,12 @@ public class Sword : WeaponBase
     private Vector2 tipPosition { get { return transform.position + transform.up * swordLength; } }
     private Quaternion prevRotation;
     private List<ContactPoint2D> collisionsCopy = new List<ContactPoint2D>();
+    private Sprite thisSprite;
 
     public bool canSpin = false;
     public GameObject weaponRing;
     public Collider2D defenseCol;
     public Collider2D offenseCol;
-
-    /*private void OnDrawGizmos() //used for testing and changing swordLength to sprite image length only
-    {
-        Gizmos.DrawSphere(tipPosition, 0.1f);
-    }*/
 
     public override void InitWeapon()
     {

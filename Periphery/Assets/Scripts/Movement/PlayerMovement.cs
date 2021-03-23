@@ -6,8 +6,9 @@ public class PlayerMovement : MonoBehaviour
     //public Vector3 targetPos; //To reduce Lerp jitter; every weapon wielding entity will need this variable
 
     private DynamicJoystick moveJoystick;
-
     private Rigidbody2D rb;
+    private float joystickAngleInDegs;
+
     private const float moveSpeed = 5f;
     private const float rotSpeed = 7f;
     private const int angleOffset = 90;
@@ -17,15 +18,20 @@ public class PlayerMovement : MonoBehaviour
     private bool playerIsMoving; //Will be registered as "moving" even when joystick magnitude is 0
     void Awake()
     {
+        joystickAngleInDegs = 0f;
         rb = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
+        
         playerIsMoving = (moveJoystick.isPressed) ? true : false;
 
-        float joystickAngleInDegs = Mathf.Rad2Deg * Mathf.Atan2(moveJoystick.Direction.y, moveJoystick.Direction.x);
-
+        joystickAngleInDegs = Mathf.Rad2Deg * Mathf.Atan2(moveJoystick.Direction.y, moveJoystick.Direction.x);
+        if(joystickAngleInDegs < 0f)
+        {
+            joystickAngleInDegs = 180 + (180 + joystickAngleInDegs);
+        }
         prevRotation = transform.rotation;
 
         if (playerIsMoving)
@@ -34,8 +40,9 @@ public class PlayerMovement : MonoBehaviour
                 Vector3 joystickRotationVector = new Vector3(Mathf.Cos(joystickAngleInDegs), Mathf.Sin(joystickAngleInDegs), 0);
                 transform.rotation = Quaternion.Euler(joystickRotationVector);
             }
-            Quaternion target = Quaternion.Euler(0, 0, joystickAngleInDegs - angleOffset);
-            transform.rotation = Quaternion.Lerp(transform.rotation, target, rotSpeed * Time.fixedDeltaTime);
+            Vector3 target = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, joystickAngleInDegs - angleOffset);
+            //transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, target, rotSpeed * Time.deltaTime);
+            transform.eulerAngles = target;
         }
         else
         {
