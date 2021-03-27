@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c867250d450c61f48b69c6089a45e680, type: 3}
+  m_Name: FastTileData
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 11400000, guid: 40f35709ef660b74da54188d7a9ccc2f, type: 2}
+  - {fileID: 11400000, guid: 24d686d0c1ca33742a62dd449aa15ff3, type: 2}
+  - {fileID: 11400000, guid: 2b383eab75a5ad74485ee6754768c730, type: 2}
+  - {fileID: 11400000, guid: cae982282df098d4f98d479bece639ce, type: 2}
+  - {fileID: 11400000, guid: e084e927416fa6349a0acf61002333a8, type: 2}
+  - {fileID: 11400000, guid: 7e8ce043ee65ba44f893c2e90daf3078, type: 2}
+  - {fileID: 11400000, guid: 3964507765baffb439ea647306c51dbb, type: 2}
+  - {fileID: 11400000, guid: 8a296223f48f46e40a4a8194e5a46867, type: 2}
+  - {fileID: 11400000, guid: 88eddc40f1a23ea4cbd4e6664c8b5a0d, type: 2}
+  isObstacle: 0
+  walkingSpeed: 5
