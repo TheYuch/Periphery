@@ -9,13 +9,16 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private float joystickAngleInDegs;
 
-    private const float moveSpeed = 5f;
+    [SerializeField] private MapManager mapManager;
+
+    private const float defaultMoveSpeed = 5f;
     private const float rotSpeed = 7f;
     private const int angleOffset = 90;
 
     private Quaternion prevRotation;
 
     private bool playerIsMoving; //Will be registered as "moving" even when joystick magnitude is 0
+
     void Awake()
     {
         joystickAngleInDegs = 0f;
@@ -24,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
         playerIsMoving = (moveJoystick.isPressed) ? true : false;
 
         joystickAngleInDegs = Mathf.Rad2Deg * Mathf.Atan2(moveJoystick.Direction.y, moveJoystick.Direction.x);
@@ -50,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
         }
         Vector2 movement = new Vector2(moveJoystick.Horizontal, moveJoystick.Vertical);
         //targetPos = rb.position + movement * moveSpeed * Time.fixedDeltaTime;
+        float moveSpeed = defaultMoveSpeed;
+        TileData tmp = mapManager.getTileData(rb.position);
+        if (tmp != null) moveSpeed = tmp.walkingSpeed;
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 }

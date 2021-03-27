@@ -80,7 +80,7 @@ public class Pathfinder
 
             if (vst[y, x] == 1) continue;
 
-            Debug.Log(new Vector2(y, x) + ": " + node.f);
+            //Debug.Log(new Vector2(y, x) + ": " + node.f);
 
             vst[y, x] = 1;
             for (int dx = -1; dx <= +1; dx++)

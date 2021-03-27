@@ -8,8 +8,8 @@ using UnityEngine.Tilemaps;
 
 public class TileData : ScriptableObject
 {
-
     public TileBase[] tiles;
 
-
+    public bool isObstacle;
+    public float walkingSpeed;
 }
