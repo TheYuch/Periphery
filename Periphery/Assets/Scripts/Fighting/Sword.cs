@@ -4,11 +4,14 @@ using System.Collections.Generic;
 
 public class Sword : WeaponBase
 {
-    private const float swordLength = 1.5f; //TODO: set this based on sprite image length
-        //note: this is only for the pixel sword with parent object scale of 0.8 for everything
+    private const float angleOffset = -90f;
+    private const float forceMultiplier = 500f;
+    private const float torqueMultipler = 0.15f;
 
-    private Vector2 tipPosition { get { return transform.position + transform.up * swordLength; } }
     private Quaternion prevRotation;
+    private float prevAngle = 0f;
+    private Vector2 prevPos = Vector2.zero;
+
     private List<ContactPoint2D> collisionsCopy = new List<ContactPoint2D>();
     private Sprite thisSprite;
 
@@ -25,41 +28,30 @@ public class Sword : WeaponBase
         transform.localPosition = Vector3.zero;
         transform.rotation = Quaternion.identity;
         prevRotation = transform.rotation;
-        StartCoroutine(SpawnBladeWind());
+        //StartCoroutine(SpawnBladeWind());
     }
 
     public override void UpdateWeapon()
     {
-        if (base.isEnemy)
+        if (base.moveJoystickIsPressed)
         {
-            if (true) //TODO: replace with if not fighting (done by AI)
-            {
-                base.UpdateReturnToParent();
-            }
+            base.UpdateReturnToParent();
+
+            transform.rotation = prevRotation;
+            prevAngle = 0f;
+            prevPos = Vector2.zero;
             return;
         }
-        else
-        {
-            if (!base.JoystickIsPressed)
-            {
-                base.UpdateReturnToParent();
 
-                transform.rotation = prevRotation;
-                return;
-            }
+        Vector2 pos = base.JoystickDirection;
+        base.rb.AddForce((pos - prevPos) * forceMultiplier);
+        
+        float angle = 5f * Mathf.Rad2Deg * Mathf.Atan2(base.JoystickDirection.y * WeaponBase.moveScale, base.JoystickDirection.x * WeaponBase.moveScale) + angleOffset;
+        float torque = Mathf.DeltaAngle(prevAngle, angle) * torqueMultipler;
+        base.rb.AddTorque(torque);
 
-            Vector2 joystickRelativePos = base.JoystickDirection * WeaponBase.moveScale;
-            //rotation
-            Vector3 forward = (Vector2)(transform.position - base.ParentPosition) - joystickRelativePos;
-            //note transform.position is position of hilt of weapon
-            if (!forward.Equals(Vector2.zero))
-            {
-                base.rb.MoveRotation(Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg + 90);
-            }
-
-            //translation (set transform.position so that tip position is equal to joystickrelativepos
-            base.rb.MovePosition(transform.position + ((Vector3)(joystickRelativePos - tipPosition) + base.ParentPosition));
-        }
+        prevAngle = angle;
+        prevPos = pos;
         prevRotation = transform.rotation;
     }
 
@@ -83,9 +75,6 @@ public class Sword : WeaponBase
             //the enemy weapon would have greater velocity magnitude.
             if (pt.collider.transform.parent != null) //if what is collided is the weapon of an enemy
             {
-                if (pt.collider.transform.parent.tag.Equals("ChainBall")) //chainball has different weapon collision rules (TODO: tbd)
-                    continue;
-
                 //print(pt.collider.gameObject.name + "'s magnitude after collision: " + pt.rigidbody.velocity.magnitude);
                 //print(pt.otherCollider.gameObject.name + "'s magnitude after collision: " + pt.otherRigidbody.velocity.magnitude);
                 if (pt.rigidbody.velocity.magnitude > pt.otherRigidbody.velocity.magnitude) //note: flipped b/c collision already happened (reason above)

@@ -3,6 +3,7 @@ using System.Collections;
 public class FightingController : MonoBehaviour, IDamageable 
 {
     [SerializeField] public Joystick fightingJoystick;
+    [SerializeField] public Joystick moveJoystick;
 
     //TODO: (Yuchen) only allow weapon switching (with button) once you leave combat with A.I. (for 5 secs)
     //this means you're not getting hit by any A.I. AND your weapon is not touching A.I.

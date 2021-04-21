@@ -16,6 +16,8 @@ public abstract class WeaponBase : MonoBehaviour
 
     private FightingController fightingController;
 
+    protected bool moveJoystickIsPressed { get { return fightingController.moveJoystick.isPressed; } }
+
     protected Collider2D ParentCollider { get { return transform.parent.GetComponent<Collider2D>(); } }
     protected Vector3 ParentPosition { get { return transform.parent.position; } }
     protected bool JoystickIsPressed { get { return fightingController.fightingJoystick.isPressed; } }

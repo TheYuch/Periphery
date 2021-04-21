@@ -16,7 +16,7 @@ public class EnemyFighting : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        currentWeapon = transform.GetChild(0).GetComponent<WeaponBase>();
+        //currentWeapon = transform.GetChild(0).GetComponent<WeaponBase>();
         rend = GetComponent<SpriteRenderer>();
     }
 
@@ -25,12 +25,12 @@ public class EnemyFighting : MonoBehaviour, IDamageable
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         thisColor = rend.color;
-        currentWeapon.InitWeapon();
+        //currentWeapon.InitWeapon();
     }
 
     private void FixedUpdate()
     {
-        currentWeapon.UpdateWeapon();
+        //currentWeapon.UpdateWeapon();
     }
     void IDamageable.takeDamage(int damage)
     {

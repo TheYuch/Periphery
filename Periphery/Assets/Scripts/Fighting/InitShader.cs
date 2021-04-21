@@ -5,7 +5,7 @@ using UnityEngine;
 public class InitShader : MonoBehaviour
 {
     private SpriteRenderer rend;
-    private bool isDisintegrating = true;
+    private bool isDisintegrating = false;
     private float fade = 1f;
 
     public Texture thisTex;
